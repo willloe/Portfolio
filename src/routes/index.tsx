@@ -4,36 +4,48 @@ import { ProjectDetailPage } from '@/pages/project-detail'
 import { NotFoundPage } from '@/pages/not-found'
 import { Layout } from '@/components/layout/layout'
 
-// Import data (in a real app, this would come from an API)
 import profileData from '@/data/profile.json'
 import projectsData from '@/data/projects.json'
 import experienceData from '@/data/experience.json'
 import skillsData from '@/data/skills.json'
 
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: (
-          <HomePage
-            profile={profileData}
-            projects={projectsData}
-            experiences={experienceData}
-            skills={skillsData}
-          />
-        ),
-      },
-      {
-        path: 'projects/:slug',
-        element: <ProjectDetailPage projects={projectsData} />,
-      },
-      {
-        path: '*',
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-])
+// Add these types
+import type { Profile, Project, Experience, Skill } from '@/lib/schemas'
+
+// Vite typing via tsconfig.build.json -> types:["vite/client"]
+const basename = import.meta.env.BASE_URL || '/'
+
+// Provide a fallback email so Profile satisfies the type
+const profile: Profile = { email: '', ...(profileData as any) }
+
+export const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: (
+            <HomePage
+              profile={profile}
+              projects={projectsData as unknown as Project[]}
+              experiences={experienceData as unknown as Experience[]}
+              skills={skillsData as unknown as Skill[]}
+            />
+          ),
+        },
+        {
+          path: 'projects/:slug',
+          element: (
+            <ProjectDetailPage
+              projects={projectsData as unknown as Project[]}
+            />
+          ),
+        },
+        { path: '*', element: <NotFoundPage /> },
+      ],
+    },
+  ],
+  { basename }
+)

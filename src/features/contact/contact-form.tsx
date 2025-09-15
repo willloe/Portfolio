@@ -2,15 +2,14 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
-import { Send, Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { Send, MapPin, Clock, LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion'
-import { isReducedMotion } from '@/lib/utils'
+import { staggerContainer, staggerItem } from '@/lib/motion'
 import {
   ContactForm as ContactFormType,
   contactFormSchema,
@@ -28,7 +27,6 @@ interface ContactFormProps {
 export function ContactForm({ profile }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
-  const reducedMotion = isReducedMotion()
 
   const {
     register,
@@ -79,7 +77,13 @@ export function ContactForm({ profile }: ContactFormProps) {
     }
   }
 
-  const contactInfo = [
+  type ContactInfo = {
+    icon: LucideIcon
+    label: string
+    value: string
+    href?: string
+  }
+  const contactInfo: ContactInfo[] = [
     {
       icon: MapPin,
       label: 'Location',
@@ -87,7 +91,7 @@ export function ContactForm({ profile }: ContactFormProps) {
     },
     {
       icon: Clock,
-      label: 'Response Time',
+      label: 'Response',
       value: 'Within 24 hours',
     },
   ]
@@ -114,7 +118,7 @@ export function ContactForm({ profile }: ContactFormProps) {
         </div>
 
         <div className="space-y-4">
-          {contactInfo.map((info, index) => (
+          {contactInfo.map(info => (
             <motion.div
               key={info.label}
               variants={staggerItem}

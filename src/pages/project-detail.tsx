@@ -5,9 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Container } from '@/components/layout/container'
-import { cn } from '@/lib/utils'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion'
-import { isReducedMotion } from '@/lib/utils'
 import { Project } from '@/lib/schemas'
 
 interface ProjectDetailPageProps {
@@ -17,7 +15,6 @@ interface ProjectDetailPageProps {
 export function ProjectDetailPage({ projects }: ProjectDetailPageProps) {
   const { slug } = useParams<{ slug: string }>()
   const project = projects.find(p => p.slug === slug)
-  const reducedMotion = isReducedMotion()
 
   if (!project) {
     return (

@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Section } from '@/components/layout/section'
 import { Container } from '@/components/layout/container'
 import { cn } from '@/lib/utils'
-import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion'
+import { staggerContainer, staggerItem } from '@/lib/motion'
 import { isReducedMotion } from '@/lib/utils'
 import { Testimonial } from '@/lib/schemas'
 

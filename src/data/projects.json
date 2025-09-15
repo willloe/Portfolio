@@ -31,7 +31,7 @@
       "Unified querying and dashboard reporting"
     ],
     "links": { "demo": "", "repo": "", "caseStudy": "" },
-    "images": ["/projects/CloudAtlas_Diagam_1.4.png"],
+    "images": ["./projects/CloudAtlas_Diagam_1.4.png"],
     "featured": true,
     "status": "completed",
     "startDate": "2025-05-01",
@@ -68,7 +68,7 @@
       "repo": "https://github.com/willloe/PresenTuneAI",
       "caseStudy": ""
     },
-    "images": ["/projects/PresenTuneAi_homepage.png"],
+    "images": ["./projects/PresenTuneAi_homepage.png"],
     "featured": true,
     "status": "completed",
     "startDate": "2025-08-01",
@@ -103,7 +103,7 @@
       "repo": "https://github.com/willloe/SkillMatch",
       "caseStudy": ""
     },
-    "images": ["/projects/SkillMatchAI.jpg"],
+    "images": ["./projects/SkillMatchAI.jpg"],
     "featured": false,
     "status": "completed",
     "startDate": "2025-04-01",
@@ -135,7 +135,7 @@
       "repo": "https://github.com/willloe/Fishnet-AI",
       "caseStudy": ""
     },
-    "images": ["/projects/Brin_logo.png"],
+    "images": ["./projects/Brin_logo.png"],
     "featured": false,
     "status": "in-progress",
     "startDate": "2025-05-01",
@@ -170,7 +170,7 @@
       "repo": "https://github.com/willloe/Portfolio",
       "caseStudy": ""
     },
-    "images": ["/projects/Portfolio.png"],
+    "images": ["./projects/Portfolio.png"],
     "featured": false,
     "status": "in-progress",
     "startDate": "",
@@ -199,9 +199,9 @@
     "links": {
       "demo": "",
       "repo": "https://github.com/willloe/MSML604-Final_Project",
-      "caseStudy": "/projects/papers/Optimization_Final_Report.pdf"
+      "caseStudy": "./projects/papers/Optimization_Final_Report.pdf"
     },
-    "images": ["/projects/papers/604_ss.png"],
+    "images": ["./projects/papers/604_ss.png"],
     "featured": false,
     "status": "completed",
     "startDate": "2025-01-26",
@@ -241,9 +241,9 @@
     "links": {
       "demo": "",
       "repo": "https://github.com/AbhinavKumar333/MSML605",
-      "caseStudy": "/projects/papers/605_Report.pdf"
+      "caseStudy": "./projects/papers/605_Report.pdf"
     },
-    "images": ["/projects/papers/605_ss.png"],
+    "images": ["./projects/papers/605_ss.png"],
     "featured": false,
     "status": "completed",
     "startDate": "2025-01-26",
@@ -285,9 +285,9 @@
     "links": {
       "demo": "",
       "repo": "",
-      "caseStudy": "/projects/papers/Final-DSA-Report.pdf"
+      "caseStudy": "./projects/papers/Final-DSA-Report.pdf"
     },
-    "images": ["/projects/papers/606_ss.png"],
+    "images": ["./projects/papers/606_ss.png"],
     "featured": false,
     "status": "completed",
     "startDate": "2025-01-26",

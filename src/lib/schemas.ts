@@ -39,6 +39,7 @@ export const projectSchema = z.object({
     demo: z.string().url().optional(),
     repo: z.string().url().optional(),
     caseStudy: z.string().url().optional(),
+    paper: z.string().url().optional(),
   }),
   images: z.array(z.string().url()).optional(),
   featured: z.boolean().default(false),

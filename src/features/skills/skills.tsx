@@ -14,12 +14,7 @@ import { Progress } from '@/components/ui/progress'
 import { Section } from '@/components/layout/section'
 import { Container } from '@/components/layout/container'
 import { cn } from '@/lib/utils'
-import {
-  fadeInUp,
-  staggerContainer,
-  staggerItem,
-  cardHover,
-} from '@/lib/motion'
+import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion'
 import { isReducedMotion } from '@/lib/utils'
 import { Skill } from '@/lib/schemas'
 
@@ -70,7 +65,7 @@ export function Skills({ skills }: SkillsProps) {
           variants={staggerContainer}
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {skills.map((skill, categoryIndex) => {
+          {skills.map((skill, _categoryIndex) => {
             const Icon =
               categoryIcons[skill.category as keyof typeof categoryIcons] ||
               Code

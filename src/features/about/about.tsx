@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Download, MapPin, Award } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Section } from '@/components/layout/section'
 import { Container } from '@/components/layout/container'
@@ -26,6 +25,8 @@ const highlights = [
 ]
 
 export function About({ profile }: AboutProps) {
+  const avatarSrc = profile.avatar || '/placeholder-avatar.jpg'
+
   return (
     <Section
       id="about"
@@ -42,25 +43,15 @@ export function About({ profile }: AboutProps) {
 
         {/* Floating code elements */}
         <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute left-10 top-32 font-mono text-sm text-cyan-400/30"
         >
           {'<div className="about">'}
         </motion.div>
 
         <motion.div
-          animate={{
-            y: [0, 15, 0],
-            rotate: [0, -3, 0],
-          }}
+          animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -99,7 +90,7 @@ export function About({ profile }: AboutProps) {
               </p>
             </div>
 
-            {/* Futuristic Highlights */}
+            {/* Highlights */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-purple-400">
                 What I Do
@@ -129,30 +120,33 @@ export function About({ profile }: AboutProps) {
               </div>
             </div>
 
-            {/* Futuristic CTA */}
+            {/* CTA */}
             <motion.div
               variants={staggerItem}
               className="flex flex-col gap-4 sm:flex-row"
             >
               {profile.resume && (
-                <motion.button
+                <motion.a
+                  href={profile.resume}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-3 text-lg font-bold text-white shadow-2xl"
-                  asChild
+                  aria-label="Download resume"
+                  className="group relative inline-flex overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-3 text-lg font-bold text-white shadow-2xl"
                 >
-                  <a href={profile.resume} download>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      initial={false}
-                    />
-                    <span className="relative z-10 flex items-center gap-2">
-                      <Download className="h-5 w-5 transition-transform group-hover:translate-y-[-2px]" />
-                      Download Resume
-                    </span>
-                  </a>
-                </motion.button>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    initial={false}
+                  />
+                  <span className="relative z-10 inline-flex items-center gap-2">
+                    <Download className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+                    Download Resume
+                  </span>
+                </motion.a>
               )}
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -174,8 +168,8 @@ export function About({ profile }: AboutProps) {
             <motion.div variants={cardHover} className="group relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src={profile.avatar}
-                  alt={profile.name}
+                  src={avatarSrc}
+                  alt={`${profile.name} portrait`}
                   className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

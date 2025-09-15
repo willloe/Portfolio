@@ -2,7 +2,7 @@ import { Hero } from '@/features/hero/hero'
 import { About } from '@/features/about/about'
 import { Projects } from '@/features/projects/projects'
 import { Experience } from '@/features/experience/experience'
-import { Skills } from '@/features/skills/skills'
+// import { Skills } from '@/features/skills/skills'
 import { Contact } from '@/features/contact/contact'
 import {
   Profile,
@@ -22,7 +22,7 @@ export function HomePage({
   profile,
   projects,
   experiences,
-  skills,
+  // skills,
 }: HomePageProps) {
   return (
     <>

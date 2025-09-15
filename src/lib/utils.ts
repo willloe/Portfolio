@@ -1,4 +1,4 @@
-import { type ClassValue, clsx } from 'clsx'
+import clsx, { type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -29,27 +29,29 @@ export function slugify(text: string) {
     .replace(/^-+|-+$/g, '')
 }
 
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout
+export function debounce<T extends (...args: any[]) => void>(
+  fn: T,
+  wait = 300
+) {
+  let timeout: ReturnType<typeof setTimeout> | undefined
   return (...args: Parameters<T>) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func(...args), wait)
+    if (timeout !== undefined) clearTimeout(timeout)
+    timeout = setTimeout(() => fn(...args), wait)
   }
 }
 
-export function throttle<T extends (...args: any[]) => any>(
-  func: T,
-  limit: number
-): (...args: Parameters<T>) => void {
-  let inThrottle: boolean
+export function throttle<T extends (...args: any[]) => void>(
+  fn: T,
+  limit = 300
+) {
+  let inThrottle = false
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
-      func(...args)
+      fn(...args)
       inThrottle = true
-      setTimeout(() => (inThrottle = false), limit)
+      setTimeout(() => {
+        inThrottle = false
+      }, limit)
     }
   }
 }
@@ -57,7 +59,8 @@ export function throttle<T extends (...args: any[]) => any>(
 export function getInitials(name: string) {
   return name
     .split(' ')
-    .map(n => n[0])
+    .filter(Boolean)
+    .map(n => n[0]!)
     .join('')
     .toUpperCase()
     .slice(0, 2)
@@ -83,11 +86,12 @@ export function truncateText(text: string, maxLength: number) {
 }
 
 export function generateId() {
-  return Math.random().toString(36).substr(2, 9)
+  // 9 chars, same as before but without deprecated `substr`
+  return Math.random().toString(36).slice(2, 11)
 }
 
 export function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise<void>(resolve => setTimeout(resolve, ms))
 }
 
 export function getRandomItem<T>(array: T[]): T {
@@ -117,47 +121,47 @@ export function easeInOutCubic(t: number) {
 
 export function getViewportDimensions() {
   if (typeof window === 'undefined') return { width: 0, height: 0 }
-  return {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  }
+  return { width: window.innerWidth, height: window.innerHeight }
 }
 
 export function isReducedMotion() {
-  if (typeof window === 'undefined') return false
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function')
+    return false
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-export function copyToClipboard(text: string) {
-  if (navigator.clipboard && window.isSecureContext) {
-    return navigator.clipboard.writeText(text)
-  } else {
-    // Fallback for older browsers
-    const textArea = document.createElement('textarea')
-    textArea.value = text
-    textArea.style.position = 'fixed'
-    textArea.style.left = '-999999px'
-    textArea.style.top = '-999999px'
-    document.body.appendChild(textArea)
-    textArea.focus()
-    textArea.select()
-    return new Promise<void>((resolve, reject) => {
-      if (document.execCommand('copy')) {
-        resolve()
-      } else {
-        reject(new Error('Failed to copy text'))
-      }
-      document.body.removeChild(textArea)
-    })
+export async function copyToClipboard(text: string): Promise<void> {
+  if (
+    typeof navigator !== 'undefined' &&
+    navigator.clipboard &&
+    typeof window !== 'undefined' &&
+    window.isSecureContext
+  ) {
+    await navigator.clipboard.writeText(text)
+    return
   }
+  // Fallback for older/HTTP contexts
+  const textArea = document.createElement('textarea')
+  textArea.value = text
+  textArea.style.position = 'fixed'
+  textArea.style.left = '-999999px'
+  textArea.style.top = '-999999px'
+  document.body.appendChild(textArea)
+  textArea.focus()
+  textArea.select()
+  if (!document.execCommand('copy')) {
+    document.body.removeChild(textArea)
+    throw new Error('Failed to copy text')
+  }
+  document.body.removeChild(textArea)
 }
 
 export function downloadFile(
-  data: string,
+  data: BlobPart | Blob,
   filename: string,
-  type: string = 'text/plain'
+  type = 'text/plain'
 ) {
-  const blob = new Blob([data], { type })
+  const blob = data instanceof Blob ? data : new Blob([data], { type })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url

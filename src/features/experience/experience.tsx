@@ -14,7 +14,6 @@ import { Section } from '@/components/layout/section'
 import { Container } from '@/components/layout/container'
 import { cn } from '@/lib/utils'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion'
-import { isReducedMotion } from '@/lib/utils'
 import { Experience as ExperienceType } from '@/lib/schemas'
 import { formatDateRange } from '@/lib/utils'
 
@@ -37,8 +36,6 @@ const typeColors = {
 }
 
 export function Experience({ experiences }: ExperienceProps) {
-  const reducedMotion = isReducedMotion()
-
   const sortedExperiences = [...experiences].sort((a, b) => {
     if (a.current && !b.current) return -1
     if (!a.current && b.current) return 1
