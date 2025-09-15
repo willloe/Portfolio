@@ -8,6 +8,23 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/tests/setup.ts'],
+
+    // ✅ Only run unit tests under src/tests/unit
+    include: ['src/tests/unit/**/*.test.ts?(x)'],
+
+    // ✅ Make sure anything e2e-ish is ignored
+    exclude: [
+      'node_modules/**',
+      'dist/**',
+      'tests/e2e/**',
+      'src/tests/e2e/**',
+      '**/*.e2e.ts?(x)',
+      '**/*.pw.ts?(x)',
+      'playwright.config.ts',
+      'playwright-report/**',
+      'test-results/**',
+    ],
+
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -20,14 +37,12 @@ export default defineConfig({
         '**/dist/**',
         '**/.{idea,git,cache,output,temp}/**',
         '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+        'playwright.config.ts',
+        'playwright-report/**',
+        'test-results/**',
       ],
       thresholds: {
-        global: {
-          branches: 80,
-          functions: 80,
-          lines: 80,
-          statements: 80,
-        },
+        global: { branches: 80, functions: 80, lines: 80, statements: 80 },
       },
     },
   },

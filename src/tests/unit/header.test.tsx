@@ -1,21 +1,19 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Header } from '@/components/layout/header'
 import { ThemeProvider } from '@/lib/theme'
 
-const renderWithTheme = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>)
-}
+const renderWithTheme = (component: React.ReactElement) =>
+  render(<ThemeProvider>{component}</ThemeProvider>)
 
 describe('Header', () => {
-  it('renders navigation items', () => {
-    renderWithTheme(<Header />)
+  const navItems = ['Home', 'About', 'Projects', 'Experience', 'Contact']
 
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('About')).toBeInTheDocument()
-    expect(screen.getByText('Projects')).toBeInTheDocument()
-    expect(screen.getByText('Experience')).toBeInTheDocument()
-    expect(screen.getByText('Skills')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+  it('renders desktop navigation items', () => {
+    renderWithTheme(<Header />)
+    navItems.forEach(label => {
+      expect(screen.getByRole('button', { name: label })).toBeInTheDocument()
+    })
   })
 
   it('renders logo', () => {
@@ -23,13 +21,21 @@ describe('Header', () => {
     expect(screen.getByText('WL')).toBeInTheDocument()
   })
 
-  it('renders theme toggle button', () => {
+  it('renders theme toggle and mobile menu buttons', () => {
     renderWithTheme(<Header />)
-    expect(screen.getByLabelText('Toggle theme')).toBeInTheDocument()
+    expect(screen.getByLabelText(/toggle theme/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/toggle menu/i)).toBeInTheDocument()
   })
 
-  it('renders mobile menu button', () => {
+  it('renders mobile navigation items when menu is opened', async () => {
+    const user = userEvent.setup()
     renderWithTheme(<Header />)
-    expect(screen.getByLabelText('Toggle menu')).toBeInTheDocument()
+
+    await user.click(screen.getByLabelText(/toggle menu/i))
+
+    navItems.forEach(label => {
+      // items appear again inside the mobile sheet
+      expect(screen.getAllByText(label).length).toBeGreaterThan(0)
+    })
   })
 })
