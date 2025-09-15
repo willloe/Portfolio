@@ -1,12 +1,10 @@
-import { useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ProjectCard } from './project-card'
 import { Section } from '@/components/layout/section'
 import { Container } from '@/components/layout/container'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { staggerContainer, staggerItem } from '@/lib/motion'
-import { isReducedMotion } from '@/lib/utils'
 import { Project } from '@/lib/schemas'
 
 interface ProjectsProps {
@@ -30,25 +28,106 @@ const allTags = [
   'CUDA',
 ]
 
+// -----------------------------
+// helpers
+// -----------------------------
+function normalize(s?: string) {
+  return (s || '').toLowerCase().trim()
+}
+
+const TAG_ALIASES: Record<string, string[]> = {
+  'tailwind css': ['tailwind', 'tailwindcss'],
+  'node.js': ['node', 'nodejs'],
+  pytorch: ['torch'],
+}
+
+const STATUS_RANK: Record<string, number> = {
+  'in-progress': 0,
+  submitted: 1,
+  'under-review': 1,
+  planned: 2,
+  preprint: 2,
+  accepted: 3,
+  completed: 3,
+}
+
+function rankStatus(status?: string) {
+  const key = normalize(status)
+  return STATUS_RANK[key] ?? 4
+}
+
+function ts(date?: string) {
+  if (!date) return Number.NEGATIVE_INFINITY
+  const n = new Date(date).getTime()
+  return Number.isFinite(n) ? n : Number.NEGATIVE_INFINITY
+}
+
+function compareProjects(a: Project, b: Project) {
+  // 1) status priority
+  const ra = rankStatus(a.status)
+  const rb = rankStatus(b.status)
+  if (ra !== rb) return ra - rb
+
+  // 2) date priority inside the same status bucket
+  const aInProgress = normalize(a.status) === 'in-progress'
+  const bInProgress = normalize(b.status) === 'in-progress'
+
+  if (aInProgress && bInProgress) {
+    // newer start first
+    return ts(b.startDate) - ts(a.startDate)
+  }
+
+  // prefer endDate if present, else startDate — newer first
+  const aKey = ts(a.endDate) > 0 ? ts(a.endDate) : ts(a.startDate)
+  const bKey = ts(b.endDate) > 0 ? ts(b.endDate) : ts(b.startDate)
+  return bKey - aKey
+}
+
 export function Projects({ projects }: ProjectsProps) {
   const [selectedTag, setSelectedTag] = useState('All')
-  const reducedMotion = isReducedMotion()
 
-  const filteredProjects =
-    selectedTag === 'All'
-      ? projects
-      : projects.filter(
-          project =>
-            project.tech.some(tech =>
-              tech.toLowerCase().includes(selectedTag.toLowerCase())
-            ) ||
-            project.tags?.some(tag =>
-              tag.toLowerCase().includes(selectedTag.toLowerCase())
-            )
-        )
+  // pre-sort once
+  const sortedProjects = useMemo(
+    () => [...projects].sort(compareProjects),
+    [projects]
+  )
 
-  const featuredProjects = projects.filter(project => project.featured)
-  const otherProjects = projects.filter(project => !project.featured)
+  // filter predicate (with alias support)
+  const matchesSelected = useCallback(
+    (p: Project) => {
+      const selected = normalize(selectedTag)
+      if (selected === 'all' || !selected) return true
+
+      const tech = (p.tech ?? []).map(normalize)
+      const tags = (p.tags ?? []).map(normalize)
+      const set = new Set([...tech, ...tags])
+
+      if (set.has(selected)) return true
+
+      for (const [canon, alts] of Object.entries(TAG_ALIASES)) {
+        if (canon === selected && alts.some(a => set.has(a))) return true
+        if (alts.includes(selected) && set.has(canon)) return true
+      }
+      return false
+    },
+    [selectedTag]
+  )
+
+  // apply filtering over the sorted list so order is preserved
+  const filteredSorted = useMemo(
+    () => sortedProjects.filter(matchesSelected),
+    [sortedProjects, matchesSelected]
+  )
+
+  // split featured vs. the rest (for the "All" view)
+  const featuredSorted = useMemo(
+    () => sortedProjects.filter(p => p.featured),
+    [sortedProjects]
+  )
+  const nonFeaturedSorted = useMemo(
+    () => sortedProjects.filter(p => !p.featured),
+    [sortedProjects]
+  )
 
   return (
     <Section
@@ -59,41 +138,26 @@ export function Projects({ projects }: ProjectsProps) {
       padding="lg"
       className="relative bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900"
     >
-      {/* Futuristic Background Elements */}
+      {/* Background accents */}
       <div className="absolute inset-0 -z-10">
         <div className="cyber-grid absolute inset-0" />
         <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
+          animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           className="absolute right-20 top-20 h-32 w-32 rounded-lg border border-cyan-400/20"
         />
         <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
+          animate={{ rotate: [360, 0], scale: [1, 0.8, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
           className="absolute bottom-20 left-20 h-24 w-24 rounded-full border border-purple-400/20"
         />
       </div>
 
       <Container size="lg">
-        {/* Filter Tags */}
+        {/* Filters */}
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          animate="visible"
           variants={staggerContainer}
           className="mb-12"
         >
@@ -119,12 +183,11 @@ export function Projects({ projects }: ProjectsProps) {
           </motion.div>
         </motion.div>
 
-        {/* Featured Projects */}
-        {selectedTag === 'All' && featuredProjects.length > 0 && (
+        {/* Featured only on "All" (no duplicates in grid) */}
+        {selectedTag === 'All' && featuredSorted.length > 0 && (
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
+            animate="visible"
             variants={staggerContainer}
             className="mb-16"
           >
@@ -136,16 +199,13 @@ export function Projects({ projects }: ProjectsProps) {
                 Highlighted projects that showcase my skills and expertise
               </p>
             </motion.div>
+
             <motion.div
               variants={staggerContainer}
               className="grid grid-cols-1 gap-8 lg:grid-cols-2"
             >
-              {featuredProjects.map((project, index) => (
-                <motion.div
-                  key={project.slug}
-                  variants={staggerItem}
-                  className="lg:col-span-1"
-                >
+              {featuredSorted.map((project, index) => (
+                <motion.div key={project.slug} variants={staggerItem}>
                   <ProjectCard project={project} index={index} />
                 </motion.div>
               ))}
@@ -153,11 +213,10 @@ export function Projects({ projects }: ProjectsProps) {
           </motion.div>
         )}
 
-        {/* All Projects Grid */}
+        {/* Filtered / All grid */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          initial={false}
+          animate="visible"
           variants={staggerContainer}
         >
           {selectedTag !== 'All' && (
@@ -166,45 +225,50 @@ export function Projects({ projects }: ProjectsProps) {
                 {selectedTag} Projects
               </h3>
               <p className="text-muted-foreground">
-                {filteredProjects.length} project
-                {filteredProjects.length !== 1 ? 's' : ''} found
+                {filteredSorted.length} project
+                {filteredSorted.length !== 1 ? 's' : ''} found
               </p>
             </motion.div>
           )}
 
-          {filteredProjects.length > 0 ? (
-            <motion.div
-              variants={staggerContainer}
-              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-            >
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.slug}
-                  variants={staggerItem}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <ProjectCard project={project} index={index} />
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div variants={staggerItem} className="py-12 text-center">
-              <div className="mb-4 text-muted-foreground">
-                <p className="text-lg">No projects found for "{selectedTag}"</p>
-                <p className="text-sm">Try selecting a different filter</p>
-              </div>
-              <Button variant="outline" onClick={() => setSelectedTag('All')}>
-                Show All Projects
-              </Button>
-            </motion.div>
-          )}
+          {(() => {
+            const list =
+              selectedTag === 'All' ? nonFeaturedSorted : filteredSorted
+
+            return list.length > 0 ? (
+              <motion.div
+                key={selectedTag} // force clean remount so new items are visible
+                initial={false}
+                animate="visible"
+                variants={staggerContainer}
+                className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+              >
+                {list.map((project, index) => (
+                  <motion.div key={project.slug} variants={staggerItem}>
+                    <ProjectCard project={project} index={index} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div variants={staggerItem} className="py-12 text-center">
+                <div className="mb-4 text-muted-foreground">
+                  <p className="text-lg">
+                    No projects found for “{selectedTag}”
+                  </p>
+                  <p className="text-sm">Try selecting a different filter</p>
+                </div>
+                <Button variant="outline" onClick={() => setSelectedTag('All')}>
+                  Show All Projects
+                </Button>
+              </motion.div>
+            )
+          })()}
         </motion.div>
 
-        {/* View More Button */}
+        {/* CTA */}
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          animate="visible"
           variants={staggerItem}
           className="mt-12 text-center"
         >
