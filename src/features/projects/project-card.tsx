@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Calendar, Tag } from 'lucide-react'
+import { ExternalLink, Github, Calendar, Tag, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
@@ -23,13 +23,21 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     })
   }
 
+  const paperUrl = project.links?.paper ?? project.links?.caseStudy ?? ''
+  const techLabel =
+    (project as any).kind === 'research' ? 'Methods & Tools' : 'Technologies'
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed':
+      case 'accepted':
         return 'success'
       case 'in-progress':
+      case 'submitted':
+      case 'under-review':
         return 'warning'
       case 'planned':
+      case 'preprint':
         return 'info'
       default:
         return 'default'
@@ -106,25 +114,49 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Futuristic Overlay Links */}
           <div className="absolute inset-0 flex items-center justify-center gap-4 bg-slate-900/80 opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:opacity-100">
-            {project.links.demo && (
-              <motion.button
+            {project.links?.demo && (
+              <motion.a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="neon-glow flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-medium text-white"
+                aria-label="Open live demo"
+                className="neon-glow inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-medium text-white"
               >
                 <ExternalLink className="h-4 w-4" />
-                Live Demo
-              </motion.button>
+                <span className="leading-none">Live Demo</span>
+              </motion.a>
             )}
-            {project.links.repo && (
-              <motion.button
+
+            {project.links?.repo && (
+              <motion.a
+                href={project.links.repo}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="glass-morphism-dark flex items-center gap-2 rounded-full border border-cyan-400/50 px-4 py-2 text-sm font-medium text-cyan-400 transition-colors hover:bg-cyan-400/10"
+                aria-label="Open source code"
+                className="glass-morphism-dark inline-flex items-center justify-center gap-2 rounded-full border border-cyan-400/50 px-4 py-2 text-sm font-medium text-cyan-400 transition-colors hover:bg-cyan-400/10"
               >
                 <Github className="h-4 w-4" />
-                Code
-              </motion.button>
+                <span className="leading-none">Code</span>
+              </motion.a>
+            )}
+
+            {paperUrl && (
+              <motion.a
+                href={paperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Read paper (PDF)"
+                className="glass-morphism-dark inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/50 px-4 py-2 text-sm font-medium text-purple-300 transition-colors hover:bg-purple-400/10"
+              >
+                <FileText className="h-4 w-4" />
+                <span className="leading-none">Read Paper</span>
+              </motion.a>
             )}
           </div>
         </div>
@@ -145,7 +177,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm font-medium text-cyan-400">
               <Tag className="h-4 w-4" />
-              Technologies
+              {techLabel}
             </div>
             <div className="flex flex-wrap gap-2">
               {project.tech.slice(0, 4).map(tech => (
@@ -206,60 +238,79 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </CardContent>
 
         <CardFooter className="pt-0">
-          <div className="flex w-full flex-wrap gap-2">
-            {project.links.demo && (
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="neon-glow flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-2 text-sm font-medium text-white"
-                asChild
-              >
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Demo
-                </a>
-              </motion.button>
-            )}
-            {project.links.repo && (
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-morphism-dark flex flex-1 items-center justify-center gap-2 rounded-lg border border-cyan-400/30 px-3 py-2 text-sm font-medium text-cyan-400 transition-colors hover:bg-cyan-400/10"
-                asChild
-              >
-                <a
-                  href={project.links.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="h-4 w-4" />
-                  Code
-                </a>
-              </motion.button>
-            )}
-            {project.links.caseStudy && (
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-morphism-dark flex-1 rounded-lg border border-purple-400/30 px-3 py-2 text-sm font-medium text-purple-400 transition-colors hover:bg-purple-400/10"
-                asChild
-              >
-                <a
-                  href={project.links.caseStudy}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Case Study
-                </a>
-              </motion.button>
-            )}
-          </div>
-        </CardFooter>
+          {(() => {
+            const caseStudyUrl = project.links?.caseStudy?.trim()
+            const explicitPaperUrl = (project.links as any)?.paper?.trim()
+            const pdfUrl = [explicitPaperUrl, caseStudyUrl].find(
+              u => typeof u === 'string' && /\.pdf(\?|$)/i.test(u)
+            )
+            const caseStudyWebUrl =
+              caseStudyUrl && caseStudyUrl !== pdfUrl ? caseStudyUrl : undefined
 
+            return (
+              <div className="flex w-full flex-wrap gap-2">
+                {project.links?.demo && (
+                  <motion.a
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Open live demo"
+                    className="neon-glow inline-flex w-full flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-4 text-sm font-medium text-white"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    <span className="leading-none">Demo</span>
+                  </motion.a>
+                )}
+
+                {project.links?.repo && (
+                  <motion.a
+                    href={project.links.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Open source code"
+                    className="glass-morphism-dark inline-flex w-full flex-1 items-center justify-center gap-2 rounded-lg border border-cyan-400/30 px-3 py-4 text-sm font-medium text-cyan-400 transition-colors hover:bg-cyan-400/10"
+                  >
+                    <Github className="h-4 w-4" />
+                    <span className="leading-none">Code</span>
+                  </motion.a>
+                )}
+
+                {pdfUrl && (
+                  <motion.a
+                    href={pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Read paper (PDF)"
+                    className="glass-morphism-dark inline-flex w-full flex-1 items-center justify-center gap-2 rounded-lg border border-purple-400/30 px-3 py-4 text-sm font-medium text-purple-400 transition-colors hover:bg-purple-400/10"
+                  >
+                    <FileText className="h-4 w-4" />
+                    <span className="leading-none">Read Paper (PDF)</span>
+                  </motion.a>
+                )}
+
+                {caseStudyWebUrl && (
+                  <motion.a
+                    href={caseStudyWebUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Open case study"
+                    className="glass-morphism-dark inline-flex w-full flex-1 items-center justify-center gap-2 rounded-lg border border-purple-400/30 px-3 py-4 text-sm font-medium text-purple-400 transition-colors hover:bg-purple-400/10"
+                  >
+                    <span className="leading-none">Case Study</span>
+                  </motion.a>
+                )}
+              </div>
+            )
+          })()}
+        </CardFooter>
         {/* Cyberpunk Footer Accent */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </Card>

@@ -1,42 +1,5 @@
 [
   {
-    "slug": "ai-chat-platform",
-    "title": "AI Chat Platform",
-    "summary": "A modern chat platform powered by AI with real-time messaging, file sharing, and intelligent conversation features.",
-    "description": "Built a comprehensive chat platform that integrates multiple AI models for intelligent conversations, real-time messaging, and collaborative features. The platform supports file sharing, voice messages, and advanced search capabilities with a focus on user privacy and data security.",
-    "tech": [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Redis",
-      "WebSocket",
-      "OpenAI API",
-      "Docker"
-    ],
-    "highlights": [
-      "Real-time messaging with WebSocket integration",
-      "AI-powered conversation suggestions and responses",
-      "Advanced file sharing with preview capabilities",
-      "End-to-end encryption for message security",
-      "Scalable architecture supporting 10k+ concurrent users"
-    ],
-    "links": {
-      "demo": "https://devpost.com/software/presentuneai?ref_content=my-projects-tab&ref_feature=my_projects",
-      "repo": "https://github.com/willloe/PresenTuneAI",
-      "caseStudy": ""
-    },
-    "images": [
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&auto=format"
-    ],
-    "featured": true,
-    "status": "completed",
-    "startDate": "2023-06-01",
-    "endDate": "2023-12-15",
-    "tags": ["AI", "Real-time", "Full-stack", "Enterprise"]
-  },
-  {
     "slug": "cloudatlas",
     "title": "CloudAtlas – Multi-Cloud Asset Inventory",
     "summary": "Real-time, cloud-native inventory platform tracking 2M+ assets with anomaly detection.",
@@ -63,7 +26,7 @@
       "repo": "",
       "caseStudy": ""
     },
-    "images": ["/CloudAtlas_Diagam_1.4.png"],
+    "images": ["/projects/CloudAtlas_Diagam_1.4.png"],
     "featured": true,
     "status": "completed",
     "startDate": "2025-05-01",
@@ -95,7 +58,7 @@
       "repo": "https://github.com/willloe/PresenTuneAI",
       "caseStudy": ""
     },
-    "images": ["/PresenTuneAi_homepage.png"],
+    "images": ["/projects/PresenTuneAi_homepage.png"],
     "featured": true,
     "status": "completed",
     "startDate": "2025-08-01",
@@ -126,7 +89,7 @@
       "repo": "https://github.com/willloe/SkillMatch",
       "caseStudy": ""
     },
-    "images": ["SkillMatchAI.jpg"],
+    "images": ["/projects/SkillMatchAI.jpg"],
     "featured": false,
     "status": "completed",
     "startDate": "2025-04-01",
@@ -149,7 +112,7 @@
       "repo": "https://github.com/willloe/Fishnet-AI",
       "caseStudy": ""
     },
-    "images": ["/Brin_logo.png"],
+    "images": ["/projects/Brin_logo.png"],
     "featured": false,
     "status": "in-progress",
     "startDate": "2025-05-01",
@@ -178,10 +141,119 @@
       "repo": "https://github.com/willloe/Portfolio",
       "caseStudy": ""
     },
-    "images": ["/Portfolio.png"],
+    "images": ["/projects/Portfolio.png"],
     "featured": false,
     "status": "in-progress",
     "startDate": "",
     "tags": ["Portfolio", "Frontend", "SEO"]
+  },
+  {
+    "slug": "minimax-adversarial-training",
+    "title": "Adversarial Defense (Robust Training) as Minimax Optimization",
+    "summary": "Course research project reframing robust training as a minimax problem and comparing five inner-max solvers on CIFAR-10 with a ResNet-50 backbone.",
+    "description": "We cast adversarial defense as a saddle-point minimax optimization under ℓ∞ constraints (ε=8/255) and implement five inner-max solvers—PGD, Mirror Descent, Frank–Wolfe, Augmented Lagrangian, and a Composite scheme—inside a unified PyTorch training pipeline. On CIFAR-10 with a ResNet-50, the Composite solver yields the best trade-off, preserving high clean accuracy while maintaining strong robustness across multiple attack types.",
+    "tech": ["PyTorch", "CUDA", "ResNet-50", "CIFAR-10", "NumPy", "Matplotlib"],
+    "highlights": [
+      "Compared five inner-max solvers (PGD, Mirror Descent, Frank–Wolfe, Augmented Lagrangian, Composite) under ℓ∞ perturbations.",
+      "Composite solver achieved ~79.8% clean accuracy and ~60% robust accuracy consistently across five attack types.",
+      "Unified adversarial training pipeline with T=10 inner steps and SGD outer updates.",
+      "Confidence calibration shows well-peaked softmax on clean inputs, indicating reliable predictions."
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/MSML604-Final_Project",
+      "caseStudy": "/projects/papers/Optimization_Final_Report.pdf"
+    },
+    "images": ["/projects/papers/604_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": [
+      "Research",
+      "Adversarial ML",
+      "Robustness",
+      "Optimization",
+      "Security"
+    ]
+  },
+  {
+    "slug": "efficient-deep-learning-cnn-optimization-cpu-gpu",
+    "title": "Efficient Deep Learning: Optimization Strategies for CNNs on CPU and GPU",
+    "summary": "Benchmarking ResNet-18 and MobileNetV2 on CIFAR-10 across CPU/GPU with hardware-aware optimizations (CPU dynamic quantization, GPU AMP) and Optuna tuning.",
+    "description": "Course research project analyzing CNN training and inference trade-offs on heterogeneous hardware. Built a unified PyTorch pipeline with CPU dynamic quantization, CUDA AMP, and Optuna sweeps, then profiled accuracy, epoch time, inference latency, and peak memory across laptops, an HPC cluster (Zaratan), Kaggle P100, and Apple Silicon.",
+    "tech": [
+      "PyTorch",
+      "CUDA 12.1",
+      "cuDNN v8",
+      "Optuna",
+      "Torchvision",
+      "Torchaudio",
+      "NumPy",
+      "scikit-learn",
+      "Matplotlib",
+      "Pandas"
+    ],
+    "highlights": [
+      "Hardware-aware pipeline with CPU dynamic quantization and GPU AMP",
+      "Optuna hyperparameter tuning per hardware/model pair",
+      "Multi-env runs: Lenovo i7, Alienware i9 + GTX 1660 Ti, Mac M3 Pro, UMD Zaratan HPC, Kaggle P100",
+      "GPU AMP cut training time by ~5–20% on supported GPUs while keeping accuracy",
+      "CPU quantization ~145MB peak memory with minor accuracy loss; GPU-tuned configs hit ~70% accuracy"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/AbhinavKumar333/MSML605",
+      "caseStudy": "/projects/papers/605_Report.pdf"
+    },
+    "images": ["/projects/papers/605_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": [
+      "Research",
+      "Deep Learning",
+      "Optimization",
+      "CNN",
+      "GPU",
+      "CPU",
+      "PyTorch"
+    ]
+  },
+  {
+    "slug": "seeding-strategies-information-spread",
+    "title": "Seeding Strategy Comparisons for Graph-Based Simulations of Information Spread",
+    "summary": "Class research project comparing seeding strategies (Kruskal-MST, Degree, PageRank, Community PageRank, Random) for information diffusion on a large Twitter Ego Network using GPU acceleration.",
+    "description": "Implemented and benchmarked multiple seeding strategies for information diffusion on a directed social graph (~81k nodes, ~1.7M edges). A custom GPU-optimized Kruskal MST (Union-Find on CuPy with cuDF sorting) was used to extract structural signals; diffusion used an adaptive β scheduler. Structured strategies (Kruskal-MST, Degree, PageRank) consistently achieved faster, broader reach than Random, with stable 30–40s runtimes across parameter sweeps. Includes analysis of ethical impacts and social considerations.",
+    "tech": [
+      "RAPIDS cuGraph",
+      "cuDF",
+      "CuPy",
+      "CUDA",
+      "NetworkX",
+      "Graphistry",
+      "Twitter Ego Network"
+    ],
+    "highlights": [
+      "Custom GPU Kruskal-MST with Union-Find + cuDF edge sorting",
+      "Compared 5 seeding methods incl. community-aware PageRank",
+      "Adaptive β scheduler for realistic diffusion saturation dynamics",
+      "Scaled to ~81k nodes and ~1.7M directed edges",
+      "Structured strategies reached near-saturation in 30–40s",
+      "Ethical & societal impact discussion included"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "",
+      "caseStudy": "/projects/papers/Final-DSA-Report.pdf"
+    },
+    "images": ["/projects/papers/606_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": ["Research", "Graph Algorithms", "Information Diffusion", "GPU"],
+    "kind": "paper"
   }
 ]

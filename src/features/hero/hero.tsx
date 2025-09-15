@@ -254,7 +254,7 @@ export function Hero({ profile }: HeroProps) {
               <br />
               <span className="ml-4 text-purple-400">skills:</span>{' '}
               <span className="text-emerald-400">
-                ["React", "TypeScript", "AI"]
+                ["AI/ML", "Full-Stack", "Cloud & Data"]
               </span>
               ,
               <br />
