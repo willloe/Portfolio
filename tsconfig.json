@@ -30,7 +30,10 @@
       "@/data/*": ["./src/data/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/styles/*": ["./src/styles/*"]
-    }
+    },
+
+    /* <-- add this so import.meta.env is typed */
+    "types": ["vite/client", "node"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

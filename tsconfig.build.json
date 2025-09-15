@@ -1,8 +1,15 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
-    "types": ["vite/client"]
+    "noEmit": true
   },
-  "exclude": ["src/tests/**", "**/*.test.*", "**/*.spec.*"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/tests",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/__tests__/**",
+    "playwright.config.ts"
+  ]
 }

@@ -13,7 +13,7 @@ import skillsData from '@/data/skills.json'
 import type { Profile, Project, Experience, Skill } from '@/lib/schemas'
 
 // Vite typing via tsconfig.build.json -> types:["vite/client"]
-const basename = import.meta.env.BASE_URL || '/'
+const basename = '/'
 
 // Provide a fallback email so Profile satisfies the type
 const profile: Profile = { email: '', ...(profileData as any) }
