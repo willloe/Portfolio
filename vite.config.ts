@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
   const enablePWA = env.ENABLE_PWA === 'true' // off by default
 
   return {
-    base,
+    base: '/',
     plugins: [
       react(),
       ...(enablePWA
