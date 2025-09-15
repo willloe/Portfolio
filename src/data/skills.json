@@ -1,0 +1,312 @@
+[
+  {
+    "category": "Frontend Development",
+    "items": [
+      {
+        "name": "React",
+        "level": "expert",
+        "years": 5,
+        "description": "Building complex, interactive user interfaces with React ecosystem"
+      },
+      {
+        "name": "TypeScript",
+        "level": "expert",
+        "years": 4,
+        "description": "Type-safe JavaScript development for scalable applications"
+      },
+      {
+        "name": "Next.js",
+        "level": "advanced",
+        "years": 3,
+        "description": "Full-stack React framework with SSR and static generation"
+      },
+      {
+        "name": "Vue.js",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Progressive JavaScript framework for building user interfaces"
+      },
+      {
+        "name": "HTML5 & CSS3",
+        "level": "expert",
+        "years": 6,
+        "description": "Semantic markup and modern CSS features"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "expert",
+        "years": 3,
+        "description": "Utility-first CSS framework for rapid UI development"
+      },
+      {
+        "name": "Sass/SCSS",
+        "level": "advanced",
+        "years": 4,
+        "description": "CSS preprocessor for maintainable stylesheets"
+      },
+      {
+        "name": "Framer Motion",
+        "level": "advanced",
+        "years": 2,
+        "description": "Animation library for React applications"
+      }
+    ]
+  },
+  {
+    "category": "Backend Development",
+    "items": [
+      {
+        "name": "Node.js",
+        "level": "expert",
+        "years": 5,
+        "description": "JavaScript runtime for server-side development"
+      },
+      {
+        "name": "Express.js",
+        "level": "expert",
+        "years": 4,
+        "description": "Web application framework for Node.js"
+      },
+      {
+        "name": "Python",
+        "level": "advanced",
+        "years": 3,
+        "description": "General-purpose programming language"
+      },
+      {
+        "name": "Django",
+        "level": "intermediate",
+        "years": 2,
+        "description": "High-level Python web framework"
+      },
+      {
+        "name": "GraphQL",
+        "level": "advanced",
+        "years": 3,
+        "description": "Query language and runtime for APIs"
+      },
+      {
+        "name": "REST APIs",
+        "level": "expert",
+        "years": 5,
+        "description": "Designing and implementing RESTful web services"
+      },
+      {
+        "name": "WebSocket",
+        "level": "advanced",
+        "years": 3,
+        "description": "Real-time communication protocol"
+      },
+      {
+        "name": "Microservices",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Architectural approach to building applications"
+      }
+    ]
+  },
+  {
+    "category": "Databases",
+    "items": [
+      {
+        "name": "PostgreSQL",
+        "level": "expert",
+        "years": 4,
+        "description": "Advanced open-source relational database"
+      },
+      {
+        "name": "MongoDB",
+        "level": "advanced",
+        "years": 3,
+        "description": "NoSQL document database"
+      },
+      {
+        "name": "Redis",
+        "level": "advanced",
+        "years": 3,
+        "description": "In-memory data structure store"
+      },
+      {
+        "name": "MySQL",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Popular open-source relational database"
+      },
+      {
+        "name": "Prisma",
+        "level": "advanced",
+        "years": 2,
+        "description": "Next-generation ORM for Node.js and TypeScript"
+      }
+    ]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "items": [
+      {
+        "name": "AWS",
+        "level": "advanced",
+        "years": 3,
+        "description": "Amazon Web Services cloud platform"
+      },
+      {
+        "name": "Vercel",
+        "level": "expert",
+        "years": 3,
+        "description": "Frontend cloud platform for static sites"
+      },
+      {
+        "name": "Docker",
+        "level": "advanced",
+        "years": 3,
+        "description": "Containerization platform"
+      },
+      {
+        "name": "GitHub Actions",
+        "level": "advanced",
+        "years": 2,
+        "description": "CI/CD platform for automated workflows"
+      },
+      {
+        "name": "Kubernetes",
+        "level": "intermediate",
+        "years": 1,
+        "description": "Container orchestration platform"
+      },
+      {
+        "name": "Terraform",
+        "level": "intermediate",
+        "years": 1,
+        "description": "Infrastructure as code tool"
+      }
+    ]
+  },
+  {
+    "category": "Mobile Development",
+    "items": [
+      {
+        "name": "React Native",
+        "level": "advanced",
+        "years": 3,
+        "description": "Cross-platform mobile app development"
+      },
+      {
+        "name": "Expo",
+        "level": "advanced",
+        "years": 2,
+        "description": "Platform for universal React applications"
+      },
+      {
+        "name": "Flutter",
+        "level": "beginner",
+        "years": 1,
+        "description": "UI toolkit for building natively compiled applications"
+      }
+    ]
+  },
+  {
+    "category": "Design & Tools",
+    "items": [
+      {
+        "name": "Figma",
+        "level": "expert",
+        "years": 4,
+        "description": "Collaborative interface design tool"
+      },
+      {
+        "name": "Adobe Creative Suite",
+        "level": "intermediate",
+        "years": 3,
+        "description": "Creative software for design and multimedia"
+      },
+      {
+        "name": "Sketch",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Digital design toolkit"
+      },
+      {
+        "name": "Git",
+        "level": "expert",
+        "years": 5,
+        "description": "Version control system"
+      },
+      {
+        "name": "VS Code",
+        "level": "expert",
+        "years": 5,
+        "description": "Code editor with extensive extensions"
+      },
+      {
+        "name": "Webpack",
+        "level": "advanced",
+        "years": 3,
+        "description": "Module bundler for JavaScript applications"
+      },
+      {
+        "name": "Vite",
+        "level": "expert",
+        "years": 2,
+        "description": "Fast build tool and development server"
+      }
+    ]
+  },
+  {
+    "category": "Testing",
+    "items": [
+      {
+        "name": "Jest",
+        "level": "expert",
+        "years": 4,
+        "description": "JavaScript testing framework"
+      },
+      {
+        "name": "React Testing Library",
+        "level": "expert",
+        "years": 3,
+        "description": "Simple and complete testing utilities for React"
+      },
+      {
+        "name": "Playwright",
+        "level": "advanced",
+        "years": 2,
+        "description": "End-to-end testing framework"
+      },
+      {
+        "name": "Cypress",
+        "level": "intermediate",
+        "years": 2,
+        "description": "End-to-end testing framework"
+      },
+      {
+        "name": "Vitest",
+        "level": "advanced",
+        "years": 1,
+        "description": "Fast unit testing framework"
+      }
+    ]
+  },
+  {
+    "category": "AI & Machine Learning",
+    "items": [
+      {
+        "name": "OpenAI API",
+        "level": "advanced",
+        "years": 2,
+        "description": "Integration with OpenAI's language models"
+      },
+      {
+        "name": "TensorFlow",
+        "level": "intermediate",
+        "years": 1,
+        "description": "Machine learning and deep learning framework"
+      },
+      {
+        "name": "Python ML Libraries",
+        "level": "intermediate",
+        "years": 2,
+        "description": "NumPy, Pandas, Scikit-learn for data science"
+      }
+    ]
+  }
+]

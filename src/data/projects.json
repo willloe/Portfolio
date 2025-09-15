@@ -1,0 +1,187 @@
+[
+  {
+    "slug": "ai-chat-platform",
+    "title": "AI Chat Platform",
+    "summary": "A modern chat platform powered by AI with real-time messaging, file sharing, and intelligent conversation features.",
+    "description": "Built a comprehensive chat platform that integrates multiple AI models for intelligent conversations, real-time messaging, and collaborative features. The platform supports file sharing, voice messages, and advanced search capabilities with a focus on user privacy and data security.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "WebSocket",
+      "OpenAI API",
+      "Docker"
+    ],
+    "highlights": [
+      "Real-time messaging with WebSocket integration",
+      "AI-powered conversation suggestions and responses",
+      "Advanced file sharing with preview capabilities",
+      "End-to-end encryption for message security",
+      "Scalable architecture supporting 10k+ concurrent users"
+    ],
+    "links": {
+      "demo": "https://devpost.com/software/presentuneai?ref_content=my-projects-tab&ref_feature=my_projects",
+      "repo": "https://github.com/willloe/PresenTuneAI",
+      "caseStudy": ""
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&auto=format"
+    ],
+    "featured": true,
+    "status": "completed",
+    "startDate": "2023-06-01",
+    "endDate": "2023-12-15",
+    "tags": ["AI", "Real-time", "Full-stack", "Enterprise"]
+  },
+  {
+    "slug": "cloudatlas",
+    "title": "CloudAtlas – Multi-Cloud Asset Inventory",
+    "summary": "Real-time, cloud-native inventory platform tracking 2M+ assets with anomaly detection.",
+    "description": "Designed and deployed a full-stack multi-cloud inventory with ingestion, normalization, and Isolation Forest–based risk flagging; positioned as an internal alternative to a costly SaaS.",
+    "tech": [
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "AWS ECS",
+      "AWS Lambda",
+      "Docker",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "highlights": [
+      "Tracks 2M+ cloud assets in real time",
+      "Isolation Forest risk-flagging with retraining via Optuna",
+      "Internal alternative to ~$200K/yr SaaS platform",
+      "Unified querying and dashboard reporting"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "",
+      "caseStudy": ""
+    },
+    "images": ["/CloudAtlas_Diagam_1.4.png"],
+    "featured": true,
+    "status": "completed",
+    "startDate": "2025-05-01",
+    "endDate": "2025-08-31",
+    "tags": ["Cloud", "Platform", "Inventory", "ML"]
+  },
+  {
+    "slug": "presentuneai",
+    "title": "PresenTuneAI – GenAI Presentation Assistant",
+    "summary": "LoRA-tuned 20B model with multi-agent pipeline for slide exports.",
+    "description": "Curated a 4.7k-pair, 33GB corpus; LoRA-tuned GPT-OSS-20B to 95% JSON adherence; multi-agent tool-calling pipeline that exports PPTX/PDF with semantic alignment checks.",
+    "tech": [
+      "Python",
+      "Flask",
+      "PyTorch",
+      "Hugging Face",
+      "LoRA",
+      "OpenAI",
+      "Groq"
+    ],
+    "highlights": [
+      "4.7k-pair, 33GB dataset with OCR→LLM cleanup",
+      "95% JSON structure adherence post-fine-tune",
+      "Multi-agent tool calling and export to PPTX/PDF",
+      "Semantic alignment via keyword/embedding/structure signals"
+    ],
+    "links": {
+      "demo": "https://devpost.com/software/presentuneai?ref_content=my-projects-tab&ref_feature=my_projects",
+      "repo": "https://github.com/willloe/PresenTuneAI",
+      "caseStudy": ""
+    },
+    "images": ["/PresenTuneAi_homepage.png"],
+    "featured": true,
+    "status": "completed",
+    "startDate": "2025-08-01",
+    "endDate": "2025-09-30",
+    "tags": ["GenAI", "LoRA", "NLP", "Tool-Calling"]
+  },
+  {
+    "slug": "skillmatchai",
+    "title": "SkillMatchAI – Career Matching Assistant",
+    "summary": "Embedding-based recommendations over resumes, surveys, and job corpora.",
+    "description": "GenAI assistant that matches candidates to roles using embeddings over 50K+ jobs and 3K+ profiles; integrated CI/CD and unit tests across FastAPI and ML layers.",
+    "tech": [
+      "FastAPI",
+      "Python",
+      "Pinecone",
+      "Gemini API",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "highlights": [
+      "74% top-5 match accuracy",
+      "RAG-style retrieval over large job corpus",
+      "Structured survey + resume parsing pipeline",
+      "Automated tests and CI for reliability"
+    ],
+    "links": {
+      "demo": "https://devpost.com/software/skillmatchai",
+      "repo": "https://github.com/willloe/SkillMatch",
+      "caseStudy": ""
+    },
+    "images": ["SkillMatchAI.jpg"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-04-01",
+    "endDate": "2025-04-30",
+    "tags": ["GenAI", "RAG", "Recommendations"]
+  },
+  {
+    "slug": "fishnet-ai",
+    "title": "Fishnet AI – Spatiotemporal Fishing Detection",
+    "summary": "AIS + satellite pipeline to classify fishing types and presence.",
+    "description": "End-to-end ML pipeline across 120K+ AIS records and 100GB+ satellite data; Optuna-tuned LightGBM/XGBoost delivering AUC 0.71 and 62% precision for presence detection.",
+    "tech": ["Python", "LightGBM", "XGBoost", "Optuna", "Pandas", "NumPy"],
+    "highlights": [
+      "Spatiotemporal features over AIS and environmental data",
+      "AUC 0.71 and 62% precision on presence detection",
+      "Supports sustainable fisheries research dissemination"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/Fishnet-AI",
+      "caseStudy": ""
+    },
+    "images": ["/Brin_logo.png"],
+    "featured": false,
+    "status": "in-progress",
+    "startDate": "2025-05-01",
+    "tags": ["Time Series", "Geospatial", "Sustainability"]
+  },
+  {
+    "slug": "portfolio-website",
+    "title": "Personal Portfolio Website",
+    "summary": "Modern, animated portfolio with dark/light themes and strong SEO.",
+    "description": "Responsive React + Vite site showcasing projects, experience, and writing. Includes Framer Motion micro-interactions, theme toggle, and structured metadata.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Router"
+    ],
+    "highlights": [
+      "Accessible, responsive layout and micro-interactions",
+      "SEO with OpenGraph, JSON-LD, sitemap, robots",
+      "Lighthouse-optimized build pipeline"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/Portfolio",
+      "caseStudy": ""
+    },
+    "images": ["/Portfolio.png"],
+    "featured": false,
+    "status": "in-progress",
+    "startDate": "",
+    "tags": ["Portfolio", "Frontend", "SEO"]
+  }
+]

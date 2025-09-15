@@ -1,0 +1,31 @@
+{
+  "name": "William C. Loe",
+  "role": "AI/ML Engineer & Full-Stack Developer",
+  "location": "College Park, MD",
+  "headline": "Blending AI, delightful UX, and rock-solid engineering to create digital experiences that matter.",
+  "summary": "Passionate AI/ML engineer and full-stack developer with 3+ years of experience building scalable web applications and beautiful user interfaces.",
+  "avatar": "/Professional_picture.jpg",
+  "resume": "/resume.pdf",
+  "socials": [
+    {
+      "type": "github",
+      "url": "https://github.com/willloe",
+      "label": "GitHub"
+    },
+    {
+      "type": "linkedin",
+      "url": "https://www.linkedin.com/in/william-loe",
+      "label": "LinkedIn"
+    },
+    {
+      "type": "email",
+      "url": "mailto:williamloe2000@gmail.com",
+      "label": "Email"
+    },
+    {
+      "type": "website",
+      "url": "https://williamloe.com",
+      "label": "Personal Website"
+    }
+  ]
+}

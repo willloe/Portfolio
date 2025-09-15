@@ -1,0 +1,136 @@
+[
+  {
+    "id": "umd-it-council-representative",
+    "company": "University of Maryland",
+    "role": "Graduate Student Representative, Information Technology Council",
+    "location": "College Park, MD",
+    "startDate": "2025-08-01",
+    "current": true,
+    "description": "Appointed graduate representative to UMD’s IT Council advising the Division of IT; collaborate across governance working groups and represent graduate student priorities.",
+    "highlights": [
+      "Advise on Division of IT policy alongside University Senate and VP/CIO",
+      "Coordinate with Learning Tech, Research Tech, IT Security, Admin Systems, Infrastructure groups",
+      "Champion accessibility, cybersecurity, teaching technology, and data governance needs"
+    ],
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop&auto=format",
+    "website": "https://it.umd.edu/about-dit/governance/it-council",
+    "type": "work"
+  },
+  {
+    "id": "inovalon-software-engineer-intern-2025",
+    "company": "Inovalon",
+    "role": "Software Engineer Intern",
+    "location": "Bowie, MD",
+    "startDate": "2025-05-01",
+    "endDate": "2025-08-31",
+    "current": false,
+    "description": "Built internal cloud platform and applied ML for risk signal automation.",
+    "highlights": [
+      "Designed and deployed real-time multi-cloud inventory (FastAPI, Postgres, Redis, ECS, Lambda)",
+      "Tracked 2M+ assets with ingestion, normalization, and unified querying",
+      "Integrated Isolation Forest anomaly detection for real-time risk flagging",
+      "Delivered $200K/yr SaaS alternative via cloud-native architecture",
+      "Enabled retraining via feedback ingestion and Optuna, improving precision by 12%"
+    ],
+    "website": "https://inovalon.com",
+    "type": "work"
+  },
+  {
+    "id": "aruze-software-engineer-ii",
+    "company": "Aruze Gaming Global",
+    "role": "Software Engineer II – Platform",
+    "location": "Las Vegas, NV",
+    "startDate": "2022-10-01",
+    "endDate": "2024-03-31",
+    "current": false,
+    "description": "Led platform features and reliability for regulated casino systems.",
+    "highlights": [
+      "Developed patented Poker Progressive System; 150+ orders within 3 months",
+      "Optimized casino-grade IoT integrations (Raspberry Pi, Arduino, Teensy) for reliability",
+      "Architected core components for modular gaming platform (supports HHR, Class II, CDS)"
+    ],
+    "website": "https://aruzeglobal.com/",
+    "type": "work"
+  },
+  {
+    "id": "aruze-software-engineer-i",
+    "company": "Aruze Gaming Global",
+    "role": "Software Engineer I – Platform",
+    "location": "Las Vegas, NV",
+    "startDate": "2021-06-01",
+    "endDate": "2022-10-01",
+    "current": false,
+    "description": "Contributed to platform engineering and modernization initiatives.",
+    "highlights": [
+      "Diagnosed and resolved complex field issues to improve reliability",
+      "Built test environments to reproduce and analyze software defects",
+      "Translated legacy slot systems to modern languages and frameworks"
+    ],
+    "website": "https://aruzeglobal.com/",
+    "type": "work"
+  },
+  {
+    "id": "startist-cofounder",
+    "company": "Startist",
+    "role": "Co-Founder",
+    "location": "Remote",
+    "startDate": "2020-06-01",
+    "endDate": "2021-06-30",
+    "current": false,
+    "description": "Co-founded and delivered a scalable MERN platform with rapid iteration.",
+    "highlights": [
+      "Architected MERN platform; launched 15+ optimized landing pages",
+      "Bridged design and engineering for cohesive UX",
+      "Led ceremonies, delegation, and delivery reviews to maintain velocity"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "provis-data-analyst-2019",
+    "company": "PT. Pialang Asuransi Provis Mitra Sinergi",
+    "role": "Data Analyst",
+    "location": "Jakarta, Indonesia",
+    "startDate": "2019-06-01",
+    "endDate": "2019-08-31",
+    "current": false,
+    "description": "Supported analytics for insurance brokerage operations.",
+    "highlights": [],
+    "type": "work"
+  },
+  {
+    "id": "equity-life-it-intern-2016",
+    "company": "Equity Life Indonesia",
+    "role": "Information Technology Intern",
+    "location": "Jakarta, Indonesia",
+    "startDate": "2016-01-01",
+    "endDate": "2016-03-31",
+    "current": false,
+    "description": "Assisted with IT support and systems tasks within the organization.",
+    "highlights": [],
+    "type": "work"
+  },
+  {
+    "id": "umd-ms-aml",
+    "company": "University of Maryland",
+    "role": "Master of Science – Applied Machine Learning",
+    "location": "College Park, MD",
+    "startDate": "2024-08-01",
+    "endDate": "2026-05-31",
+    "current": true,
+    "description": "Graduate studies in Applied Machine Learning; GPA 3.89; Phi Kappa Phi.",
+    "highlights": [],
+    "type": "education"
+  },
+  {
+    "id": "tamucc-bs-cs",
+    "company": "Texas A&M University–Corpus Christi",
+    "role": "Bachelor of Science – Computer Science (Minor: Mathematics)",
+    "location": "Corpus Christi, TX",
+    "startDate": "2017-01-01",
+    "endDate": "2020-12-31",
+    "current": false,
+    "description": "Undergraduate studies in Computer Science with a Mathematics minor.",
+    "highlights": [],
+    "type": "education"
+  }
+]
