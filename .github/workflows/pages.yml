@@ -1,5 +1,4 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches: [main]
@@ -25,8 +24,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      # SPA fallback so deep links don’t 404 on Pages
-      - run: cp dist/index.html dist/404.html
+      - run: cp dist/index.html dist/404.html   # SPA fallback for deep links
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
