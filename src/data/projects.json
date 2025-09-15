@@ -1,0 +1,298 @@
+[
+  {
+    "slug": "cloudatlas",
+    "title": "CloudAtlas – Multi-Cloud Asset Inventory",
+    "summary": "Real-time, cloud-native inventory platform tracking 2M+ assets with anomaly detection.",
+    "description": "Designed and deployed a full-stack multi-cloud inventory with ingestion, normalization, and Isolation Forest–based risk flagging; positioned as an internal alternative to a costly SaaS.",
+    "tech": [
+      "FastAPI",
+      "AWS ECS",
+      "PostgreSQL",
+      "Docker",
+      "AWS Lambda",
+      "Redis",
+      "Python",
+      "SQLAlchemy",
+      "Pydantic",
+      "Alembic",
+      "Scikit-learn",
+      "Optuna",
+      "Pandas",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "highlights": [
+      "Tracks 2M+ cloud assets in real time",
+      "Isolation Forest risk-flagging with retraining via Optuna",
+      "Internal alternative to ~$200K/yr SaaS platform",
+      "Unified querying and dashboard reporting"
+    ],
+    "links": { "demo": "", "repo": "", "caseStudy": "" },
+    "images": ["./projects/CloudAtlas_Diagam_1.4.png"],
+    "featured": true,
+    "status": "completed",
+    "startDate": "2025-05-01",
+    "endDate": "2025-08-31",
+    "tags": ["Cloud", "Platform", "Inventory", "ML"]
+  },
+  {
+    "slug": "presentuneai",
+    "title": "PresenTuneAI – GenAI Presentation Assistant",
+    "summary": "LoRA-tuned 20B model with multi-agent pipeline for slide exports.",
+    "description": "Curated a 4.7k-pair, 33GB corpus; LoRA-tuned GPT-OSS-20B to 95% JSON adherence; multi-agent tool-calling pipeline that exports PPTX/PDF with semantic alignment checks.",
+    "tech": [
+      "PyTorch",
+      "LoRA",
+      "Hugging Face Transformers",
+      "Python",
+      "PEFT",
+      "Hugging Face Datasets",
+      "OpenAI API",
+      "Groq API",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Flask"
+    ],
+    "highlights": [
+      "4.7k-pair, 33GB dataset with OCR→LLM cleanup",
+      "95% JSON structure adherence post-fine-tune",
+      "Multi-agent tool calling and export to PPTX/PDF",
+      "Semantic alignment via keyword/embedding/structure signals"
+    ],
+    "links": {
+      "demo": "https://devpost.com/software/presentuneai?ref_content=my-projects-tab&ref_feature=my_projects",
+      "repo": "https://github.com/willloe/PresenTuneAI",
+      "caseStudy": ""
+    },
+    "images": ["./projects/PresenTuneAi_homepage.png"],
+    "featured": true,
+    "status": "completed",
+    "startDate": "2025-08-01",
+    "endDate": "2025-09-30",
+    "tags": ["GenAI", "LoRA", "NLP", "Tool-Calling"]
+  },
+  {
+    "slug": "skillmatchai",
+    "title": "SkillMatchAI – Career Matching Assistant",
+    "summary": "Embedding-based recommendations over resumes, surveys, and job corpora.",
+    "description": "GenAI assistant that matches candidates to roles using embeddings over 50K+ jobs and 3K+ profiles; integrated CI/CD and unit tests across FastAPI and ML layers.",
+    "tech": [
+      "FastAPI",
+      "Pinecone",
+      "PostgreSQL",
+      "Docker",
+      "Python",
+      "Pydantic",
+      "Gemini API",
+      "Docker Compose",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "highlights": [
+      "74% top-5 match accuracy",
+      "RAG-style retrieval over large job corpus",
+      "Structured survey + resume parsing pipeline",
+      "Automated tests and CI for reliability"
+    ],
+    "links": {
+      "demo": "https://devpost.com/software/skillmatchai",
+      "repo": "https://github.com/willloe/SkillMatch",
+      "caseStudy": ""
+    },
+    "images": ["./projects/SkillMatchAI.jpg"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-04-01",
+    "endDate": "2025-04-30",
+    "tags": ["GenAI", "RAG", "Recommendations"]
+  },
+  {
+    "slug": "fishnet-ai",
+    "title": "Fishnet AI – Spatiotemporal Fishing Detection",
+    "summary": "AIS + satellite pipeline to classify fishing types and presence.",
+    "description": "End-to-end ML pipeline across 120K+ AIS records and 100GB+ satellite data; Optuna-tuned LightGBM/XGBoost delivering AUC 0.71 and 62% precision for presence detection.",
+    "tech": [
+      "LightGBM",
+      "XGBoost",
+      "Optuna",
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Matplotlib"
+    ],
+    "highlights": [
+      "Spatiotemporal features over AIS and environmental data",
+      "AUC 0.71 and 62% precision on presence detection",
+      "Supports sustainable fisheries research dissemination"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/Fishnet-AI",
+      "caseStudy": ""
+    },
+    "images": ["./projects/Brin_logo.png"],
+    "featured": false,
+    "status": "in-progress",
+    "startDate": "2025-05-01",
+    "tags": ["Time Series", "Geospatial", "Sustainability"]
+  },
+  {
+    "slug": "portfolio-website",
+    "title": "Personal Portfolio Website",
+    "summary": "Modern, animated portfolio with dark/light themes and strong SEO.",
+    "description": "Responsive React + Vite site showcasing projects, experience, and writing. Includes Framer Motion micro-interactions, theme toggle, and structured metadata.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "Framer Motion",
+      "React Router",
+      "Vitest",
+      "Playwright",
+      "VitePWA",
+      "ESLint",
+      "Prettier",
+      "shadcn/ui"
+    ],
+    "highlights": [
+      "Accessible, responsive layout and micro-interactions",
+      "SEO with OpenGraph, JSON-LD, sitemap, robots",
+      "Lighthouse-optimized build pipeline"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/Portfolio",
+      "caseStudy": ""
+    },
+    "images": ["./projects/Portfolio.png"],
+    "featured": false,
+    "status": "in-progress",
+    "startDate": "",
+    "tags": ["Portfolio", "Frontend", "SEO"]
+  },
+  {
+    "slug": "minimax-adversarial-training",
+    "title": "Adversarial Defense (Robust Training) as Minimax Optimization",
+    "summary": "Course research project reframing robust training as a minimax problem and comparing five inner-max solvers on CIFAR-10 with a ResNet-50 backbone.",
+    "description": "We cast adversarial defense as a saddle-point minimax optimization under ℓ∞ constraints (ε=8/255) and implement five inner-max solvers—PGD, Mirror Descent, Frank–Wolfe, Augmented Lagrangian, and a Composite scheme—inside a unified PyTorch training pipeline. On CIFAR-10 with a ResNet-50, the Composite solver yields the best trade-off, preserving high clean accuracy while maintaining strong robustness across multiple attack types.",
+    "tech": [
+      "PyTorch",
+      "CUDA",
+      "Torchvision",
+      "ResNet-50",
+      "CIFAR-10",
+      "NumPy",
+      "Matplotlib"
+    ],
+    "highlights": [
+      "Compared five inner-max solvers (PGD, Mirror Descent, Frank–Wolfe, Augmented Lagrangian, Composite) under ℓ∞ perturbations.",
+      "Composite solver achieved ~79.8% clean accuracy and ~60% robust accuracy consistently across five attack types.",
+      "Unified adversarial training pipeline with T=10 inner steps and SGD outer updates.",
+      "Confidence calibration shows well-peaked softmax on clean inputs, indicating reliable predictions."
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/willloe/MSML604-Final_Project",
+      "caseStudy": "./projects/papers/Optimization_Final_Report.pdf"
+    },
+    "images": ["./projects/papers/604_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": [
+      "Research",
+      "Adversarial ML",
+      "Robustness",
+      "Optimization",
+      "Security"
+    ]
+  },
+  {
+    "slug": "efficient-deep-learning-cnn-optimization-cpu-gpu",
+    "title": "Efficient Deep Learning: Optimization Strategies for CNNs on CPU and GPU",
+    "summary": "Benchmarking ResNet-18 and MobileNetV2 on CIFAR-10 across CPU/GPU with hardware-aware optimizations (CPU dynamic quantization, GPU AMP) and Optuna tuning.",
+    "description": "Course research project analyzing CNN training and inference trade-offs on heterogeneous hardware. Built a unified PyTorch pipeline with CPU dynamic quantization, CUDA AMP, and Optuna sweeps, then profiled accuracy, epoch time, inference latency, and peak memory across laptops, an HPC cluster (Zaratan), Kaggle P100, and Apple Silicon.",
+    "tech": [
+      "PyTorch",
+      "CUDA",
+      "Optuna",
+      "Torchvision",
+      "cuDNN",
+      "Torchaudio",
+      "NumPy",
+      "Scikit-learn",
+      "Matplotlib",
+      "Pandas"
+    ],
+    "highlights": [
+      "Hardware-aware pipeline with CPU dynamic quantization and GPU AMP",
+      "Optuna hyperparameter tuning per hardware/model pair",
+      "Multi-env runs: Lenovo i7, Alienware i9 + GTX 1660 Ti, Mac M3 Pro, UMD Zaratan HPC, Kaggle P100",
+      "GPU AMP cut training time by ~5–20% on supported GPUs while keeping accuracy",
+      "CPU quantization ~145MB peak memory with minor accuracy loss; GPU-tuned configs hit ~70% accuracy"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "https://github.com/AbhinavKumar333/MSML605",
+      "caseStudy": "./projects/papers/605_Report.pdf"
+    },
+    "images": ["./projects/papers/605_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": [
+      "Research",
+      "Deep Learning",
+      "Optimization",
+      "CNN",
+      "GPU",
+      "CPU",
+      "PyTorch"
+    ]
+  },
+  {
+    "slug": "seeding-strategies-information-spread",
+    "title": "Seeding Strategy Comparisons for Graph-Based Simulations of Information Spread",
+    "summary": "Class research project comparing seeding strategies (Kruskal-MST, Degree, PageRank, Community PageRank, Random) for information diffusion on a large Twitter Ego Network using GPU acceleration.",
+    "description": "Implemented and benchmarked multiple seeding strategies for information diffusion on a directed social graph (~81k nodes, ~1.7M edges). A custom GPU-optimized Kruskal MST (Union-Find on CuPy with cuDF sorting) was used to extract structural signals; diffusion used an adaptive β scheduler. Structured strategies (Kruskal-MST, Degree, PageRank) consistently achieved faster, broader reach than Random, with stable 30–40s runtimes across parameter sweeps. Includes analysis of ethical impacts and social considerations.",
+    "tech": [
+      "RAPIDS cuGraph",
+      "CUDA",
+      "cuDF",
+      "CuPy",
+      "NetworkX",
+      "Graphistry",
+      "NumPy",
+      "Pandas",
+      "Matplotlib"
+    ],
+    "highlights": [
+      "Custom GPU Kruskal-MST with Union-Find + cuDF edge sorting",
+      "Compared 5 seeding methods incl. community-aware PageRank",
+      "Adaptive β scheduler for realistic diffusion saturation dynamics",
+      "Scaled to ~81k nodes and ~1.7M directed edges",
+      "Structured strategies reached near-saturation in 30–40s",
+      "Ethical & societal impact discussion included"
+    ],
+    "links": {
+      "demo": "",
+      "repo": "",
+      "caseStudy": "./projects/papers/Final-DSA-Report.pdf"
+    },
+    "images": ["./projects/papers/606_ss.png"],
+    "featured": false,
+    "status": "completed",
+    "startDate": "2025-01-26",
+    "endDate": "2025-05-08",
+    "tags": ["Research", "Graph Algorithms", "Information Diffusion", "GPU"],
+    "kind": "paper"
+  }
+]

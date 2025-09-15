@@ -1,0 +1,317 @@
+[
+  {
+    "category": "Programming Languages",
+    "items": [
+      {
+        "name": "TypeScript",
+        "level": "expert",
+        "years": 4,
+        "description": "Type-safe JavaScript for scalable, reliable frontends and backends"
+      },
+      {
+        "name": "JavaScript (ES2020+)",
+        "level": "expert",
+        "years": 5,
+        "description": "Modern JS features, async patterns, performance tuning"
+      },
+      {
+        "name": "Python",
+        "level": "advanced",
+        "years": 3,
+        "description": "Data/ML pipelines, FastAPI services, tooling"
+      },
+      {
+        "name": "SQL",
+        "level": "advanced",
+        "years": 4,
+        "description": "Schema design, query optimization, migrations"
+      }
+    ]
+  },
+  {
+    "category": "Frontend Development",
+    "items": [
+      {
+        "name": "React",
+        "level": "expert",
+        "years": 5,
+        "description": "Complex, interactive UIs with hooks, context, and performance patterns"
+      },
+      {
+        "name": "React Router",
+        "level": "advanced",
+        "years": 3,
+        "description": "SPA routing, code-splitting, data APIs"
+      },
+      {
+        "name": "Next.js",
+        "level": "advanced",
+        "years": 3,
+        "description": "SSR/SSG, API routes, edge rendering"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "expert",
+        "years": 3,
+        "description": "Utility-first styling, design systems, responsive layouts"
+      },
+      {
+        "name": "Framer Motion",
+        "level": "advanced",
+        "years": 2,
+        "description": "Accessible micro-interactions and motion"
+      },
+      {
+        "name": "HTML5 & CSS3",
+        "level": "expert",
+        "years": 6,
+        "description": "Semantic, accessible, performant UI foundations"
+      },
+      {
+        "name": "Vite",
+        "level": "expert",
+        "years": 2,
+        "description": "Lightning-fast dev/build tooling"
+      }
+    ]
+  },
+  {
+    "category": "Backend & APIs",
+    "items": [
+      {
+        "name": "Node.js",
+        "level": "expert",
+        "years": 5,
+        "description": "High-throughput REST services, streaming, workers"
+      },
+      {
+        "name": "Express.js",
+        "level": "expert",
+        "years": 4,
+        "description": "Production APIs, middleware, auth, rate-limiting"
+      },
+      {
+        "name": "FastAPI",
+        "level": "advanced",
+        "years": 2,
+        "description": "Python microservices with type-hinted contracts"
+      },
+      {
+        "name": "REST APIs",
+        "level": "expert",
+        "years": 5,
+        "description": "OpenAPI, pagination, idempotency, observability hooks"
+      },
+      {
+        "name": "GraphQL",
+        "level": "advanced",
+        "years": 3,
+        "description": "Schemas, resolvers, federation basics"
+      },
+      {
+        "name": "WebSocket",
+        "level": "advanced",
+        "years": 3,
+        "description": "Realtime messaging and presence systems"
+      }
+    ]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "items": [
+      {
+        "name": "Docker",
+        "level": "advanced",
+        "years": 5,
+        "description": "Image hardening, multi-stage builds, cache optimization"
+      },
+      {
+        "name": "GitHub Actions",
+        "level": "advanced",
+        "years": 2,
+        "description": "CI/CD for web + ML with caching, matrix builds"
+      },
+      {
+        "name": "AWS (ECS, Lambda)",
+        "level": "intermediate",
+        "years": 1,
+        "description": "Container + serverless workloads, networking, IAM"
+      },
+      {
+        "name": "Terraform",
+        "level": "intermediate",
+        "years": 1,
+        "description": "Infra as code for repeatable cloud environments"
+      },
+      {
+        "name": "Vercel",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Edge/SSR hosting and frontend DX"
+      }
+    ]
+  },
+  {
+    "category": "Data & Storage",
+    "items": [
+      {
+        "name": "PostgreSQL",
+        "level": "expert",
+        "years": 4,
+        "description": "RDBMS design, indexing, transactions, performance"
+      },
+      {
+        "name": "Redis",
+        "level": "advanced",
+        "years": 3,
+        "description": "Caching, queues, pub/sub, rate-limits"
+      },
+      {
+        "name": "MongoDB",
+        "level": "advanced",
+        "years": 3,
+        "description": "Flexible schemas, aggregation, TTL strategies"
+      },
+      {
+        "name": "Prisma",
+        "level": "advanced",
+        "years": 2,
+        "description": "Type-safe ORM, migrations, connection management"
+      }
+    ]
+  },
+  {
+    "category": "AI & Machine Learning",
+    "items": [
+      {
+        "name": "PyTorch",
+        "level": "advanced",
+        "years": 3,
+        "description": "Training/inference, AMP/quantization, robustness evals"
+      },
+      {
+        "name": "XGBoost / LightGBM",
+        "level": "advanced",
+        "years": 2,
+        "description": "Structured ML with Optuna tuning"
+      },
+      {
+        "name": "CUDA & cuDNN",
+        "level": "intermediate",
+        "years": 1,
+        "description": "GPU acceleration, profiling, memory awareness"
+      },
+      {
+        "name": "RAPIDS (cuGraph, cuDF, CuPy)",
+        "level": "intermediate",
+        "years": 1,
+        "description": "GPU graph analytics & dataframe operations"
+      },
+      {
+        "name": "scikit-learn",
+        "level": "advanced",
+        "years": 2,
+        "description": "Feature pipelines, model selection, metrics"
+      },
+      {
+        "name": "Optuna",
+        "level": "advanced",
+        "years": 2,
+        "description": "Hyperparameter optimization at scale"
+      },
+      {
+        "name": "Vector Search (Pinecone)",
+        "level": "advanced",
+        "years": 1,
+        "description": "Embeddings, ANN indexes, RAG patterns"
+      },
+      {
+        "name": "LoRA Fine-Tuning",
+        "level": "advanced",
+        "years": 1,
+        "description": "Parameter-efficient LLM adaptation and evaluation"
+      },
+      {
+        "name": "OpenAI / Gemini APIs",
+        "level": "advanced",
+        "years": 2,
+        "description": "Tool-use, function-calling, safety and evals"
+      }
+    ]
+  },
+  {
+    "category": "MLOps & Reliability",
+    "items": [
+      {
+        "name": "Model Evaluation & Robustness",
+        "level": "advanced",
+        "years": 2,
+        "description": "Adversarial training, calibration, attack benchmarking"
+      },
+      {
+        "name": "Data & Experiment Tracking",
+        "level": "advanced",
+        "years": 2,
+        "description": "Reproducible runs, artifacts, CI for ML"
+      },
+      {
+        "name": "Serving & Performance",
+        "level": "intermediate",
+        "years": 2,
+        "description": "Batch/online inference, caching, concurrency"
+      }
+    ]
+  },
+  {
+    "category": "Testing & Quality",
+    "items": [
+      {
+        "name": "Jest",
+        "level": "expert",
+        "years": 4,
+        "description": "Unit + integration tests for JS/TS"
+      },
+      {
+        "name": "React Testing Library",
+        "level": "expert",
+        "years": 3,
+        "description": "User-centric component tests"
+      },
+      {
+        "name": "Playwright",
+        "level": "advanced",
+        "years": 2,
+        "description": "Cross-browser E2E with trace viewer"
+      },
+      {
+        "name": "Vitest",
+        "level": "advanced",
+        "years": 1,
+        "description": "Fast TS-native unit testing"
+      }
+    ]
+  },
+  {
+    "category": "Design & Tools",
+    "items": [
+      {
+        "name": "Git",
+        "level": "expert",
+        "years": 5,
+        "description": "Branching, code review, release hygiene"
+      },
+      {
+        "name": "VS Code",
+        "level": "expert",
+        "years": 5,
+        "description": "Productive IDE setup and extensions"
+      },
+      {
+        "name": "Figma",
+        "level": "expert",
+        "years": 4,
+        "description": "Design systems and collaborative prototyping"
+      }
+    ]
+  }
+]
