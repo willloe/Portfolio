@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
 
-    <!-- SEO Meta Tags -->
     <title>William C. Loe - AI/ML Engineer & Full-Stack Developer</title>
     <meta
       name="description"
@@ -17,36 +16,32 @@
     />
     <meta name="author" content="William C. Loe" />
 
-    <!-- Open Graph Meta Tags -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="William C. Loe - AI/ML Engineer & Full-Stack Developer"
-    />
-    <meta
-      property="og:description"
-      content="Passionate AI/ML engineer and full-stack developer with 3+ years of experience building scalable web applications and beautiful user interfaces."
-    />
+    <meta property="og:title" content="William C. Loe - AI/ML Engineer & Full-Stack Developer" />
+    <meta property="og:description" content="Passionate AI/ML engineer and full-stack developer with 3+ years of experience building scalable web applications and beautiful user interfaces." />
     <meta property="og:url" content="https://williamloe.com" />
     <meta property="og:image" content="https://williamloe.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="William C. Loe Portfolio" />
 
-    <!-- Additional Meta Tags -->
+    <!-- Robots -->
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href="https://williamloe.com" />
 
-    <!-- Preconnect to external domains -->
+    <!-- Preconnect (fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Favicon -->
+    <!-- Icons (ensure files exist in /public) -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- No manifest link here unless PWA is enabled to avoid 404s -->
+
+    <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -71,7 +66,6 @@
           "TypeScript",
           "Full-Stack Development",
           "Web Development",
-          "Web Development",
           "UI/UX Design",
           "Machine Learning"
         ]
@@ -80,6 +74,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Vite will replace this with built assets on build -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

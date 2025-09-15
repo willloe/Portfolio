@@ -3,16 +3,12 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
-const repoName = 'Portfolio'
-const isGHUserSite = false // set true if the repo is <username>.github.io
-const base = isGHUserSite ? '/' : `/${repoName}/`
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const enablePWA = env.ENABLE_PWA === 'true' // off by default
 
   return {
-    base: '/',
+    base: '/', // user site (willloe.github.io) is served from root
     plugins: [
       react(),
       ...(enablePWA
@@ -21,37 +17,10 @@ export default defineConfig(({ mode }) => {
               registerType: 'autoUpdate',
               injectRegister: 'auto',
               workbox: {
-                // Keep this minimal & valid
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-
-                // OPTIONAL: safe runtime caching examples (no custom hooks)
-                runtimeCaching: [
-                  {
-                    urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-                    handler: 'StaleWhileRevalidate',
-                    options: {
-                      cacheName: 'google-fonts-stylesheets',
-                      expiration: {
-                        maxEntries: 10,
-                        maxAgeSeconds: 60 * 60 * 24 * 365,
-                      },
-                    },
-                  },
-                  {
-                    urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-                    handler: 'CacheFirst',
-                    options: {
-                      cacheName: 'google-fonts-webfonts',
-                      cacheableResponse: { statuses: [0, 200] },
-                      expiration: {
-                        maxEntries: 10,
-                        maxAgeSeconds: 60 * 60 * 24 * 365,
-                      },
-                    },
-                  },
-                ],
               },
               includeAssets: [
+                'favicon.svg',
                 'favicon.ico',
                 'apple-touch-icon.png',
                 'masked-icon.svg',
@@ -65,25 +34,12 @@ export default defineConfig(({ mode }) => {
                 background_color: '#ffffff',
                 display: 'standalone',
                 orientation: 'portrait',
-                scope: base,
-                start_url: base,
+                scope: '/',     // keep in sync with base
+                start_url: '/', // keep in sync with base
                 icons: [
-                  {
-                    src: 'pwa-192x192.png',
-                    sizes: '192x192',
-                    type: 'image/png',
-                  },
-                  {
-                    src: 'pwa-512x512.png',
-                    sizes: '512x512',
-                    type: 'image/png',
-                  },
-                  {
-                    src: 'pwa-512x512.png',
-                    sizes: '512x512',
-                    type: 'image/png',
-                    purpose: 'any maskable',
-                  },
+                  { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+                  { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+                  { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
                 ],
               },
             }),
