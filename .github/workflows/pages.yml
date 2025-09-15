@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # change if your default branch is different
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -12,28 +12,37 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node 18 avoids the rollup optional-deps issue on CI
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 18.x
+          cache: 'npm'
 
-      - name: Install deps
-        run: npm ci
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Type check (optional)
+        run: npm run type-check --if-present
+
+      - name: Lint (optional)
+        run: npm run lint --if-present
 
       - name: Build
         run: npm run build
 
-      - name: SPA fallback (copy 404)
+      # SPA fallback so deep links (/projects/slug) work on Pages
+      - name: SPA 404 fallback
         run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
@@ -42,12 +51,12 @@ jobs:
           path: dist
 
   deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
