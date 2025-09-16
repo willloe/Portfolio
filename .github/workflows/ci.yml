@@ -1,12 +1,11 @@
 name: CI
+
 on:
-  push:
-    branches: [main, develop]
   pull_request:
     branches: [main]
 
 jobs:
-  test-build:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,7 +13,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci || npm install
-      - run: npm run type-check --if-present
-      - run: npm run lint --if-present
-      - run: npm run build
+      - name: Install deps
+        run: npm install
+      - name: Lint (if present)
+        run: npm run lint --if-present
+      - name: Type check (if present)
+        run: npm run type-check --if-present

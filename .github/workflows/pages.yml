@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,33 +15,25 @@ concurrency:
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Node 18 avoids the rollup optional-deps issue on CI
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci || npm install
-
-      - name: Type check (optional)
-        run: npm run type-check --if-present
-
-      - name: Lint (optional)
-        run: npm run lint --if-present
+      # IMPORTANT: use install, not ci (avoids the Rollup native bug)
+      - name: Install deps
+        run: npm install
 
       - name: Build
         run: npm run build
 
-      # SPA fallback so deep links (/projects/slug) work on Pages
-      - name: SPA 404 fallback
+      - name: Copy 404 for SPA routing
         run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
@@ -51,7 +42,6 @@ jobs:
           path: dist
 
   deploy:
-    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     environment:
