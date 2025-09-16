@@ -24,11 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          # don't cache with npm lockfile since we remove it
 
-      # IMPORTANT: use install, not ci (avoids the Rollup native bug)
-      - name: Install deps
-        run: npm install
+      - name: Remove npm lockfile (cross-OS fix)
+        run: rm -f package-lock.json
+
+      - name: Install deps (fresh resolution on Linux)
+        run: npm install --no-audit --no-fund
 
       - name: Build
         run: npm run build
