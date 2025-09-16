@@ -1,12 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Download, ExternalLink, Sparkles, Zap, Code2 } from 'lucide-react'
 import { Container } from '@/components/layout/container'
-import {
-  fadeInUp,
-  staggerContainer,
-  staggerItem,
-  parallaxUp,
-} from '@/lib/motion'
+import { fadeInUp, staggerContainer, staggerItem, parallaxUp } from '@/lib/motion'
 import { isReducedMotion } from '@/lib/utils'
 import { Profile } from '@/lib/schemas'
 import { useEffect, useRef, useState } from 'react'
@@ -27,9 +22,11 @@ export function Hero({ profile }: HeroProps) {
   const y2 = useTransform(scrollY, [0, 500], [0, -100])
   const y3 = useTransform(scrollY, [0, 500], [0, -200])
 
-  // Center scroll position on load
+  // Ensure we start at the very top on initial render (unless visiting a hash)
   useEffect(() => {
-    window.scrollTo(0, window.innerHeight / 2)
+    if (typeof window === 'undefined') return
+    if (window.location.hash) return
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
   // Mouse tracking for interactive elements
@@ -43,16 +40,13 @@ export function Hero({ profile }: HeroProps) {
         })
       }
     }
-
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
   const scrollToNext = () => {
     const aboutSection = document.querySelector('#about')
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
-    }
+    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
