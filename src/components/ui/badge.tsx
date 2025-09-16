@@ -20,9 +20,19 @@ const badgeVariants = cva(
           'border-transparent bg-yellow-500 text-white hover:bg-yellow-600',
         info: 'border-transparent bg-blue-500 text-white hover:bg-blue-600',
       },
+      // NEW: soft color tints for pills
+      tone: {
+        none: '',
+        blue: 'bg-blue-500/15 text-blue-300 border-blue-400/30',
+        green: 'bg-green-500/15 text-green-300 border-green-400/30',
+        purple: 'bg-purple-500/15 text-purple-300 border-purple-400/30',
+        orange: 'bg-orange-500/15 text-orange-300 border-orange-400/30',
+        emerald: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30',
+      },
     },
     defaultVariants: {
       variant: 'default',
+      tone: 'none',
     },
   }
 )
@@ -31,10 +41,8 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, ...props }: BadgeProps) {
-  return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  )
+export function Badge({ className, variant, tone, ...props }: BadgeProps) {
+  return <div className={cn(badgeVariants({ variant, tone }), className)} {...props} />
 }
 
-export { Badge, badgeVariants }
+export { badgeVariants }

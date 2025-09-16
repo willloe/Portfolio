@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://williamloe.com/sitemap.xml
+Sitemap: https://willloe.github.io/sitemap.xml

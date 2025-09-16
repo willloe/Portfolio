@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Heart,
   Code,
+  type LucideIcon,
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
@@ -21,19 +22,27 @@ interface ExperienceProps {
   experiences: ExperienceType[]
 }
 
-const typeIcons = {
+const typeIcons: Record<ExperienceType['type'], LucideIcon> = {
   work: Briefcase,
   education: GraduationCap,
   volunteer: Heart,
   freelance: Code,
 }
 
-const typeColors = {
+const typeDotColors: Record<ExperienceType['type'], string> = {
   work: 'bg-blue-500',
   education: 'bg-green-500',
   volunteer: 'bg-purple-500',
   freelance: 'bg-orange-500',
 }
+
+const typeTones = {
+  work: 'blue',
+  education: 'green',
+  volunteer: 'purple',
+  freelance: 'orange',
+} as const
+type ExperienceKind = keyof typeof typeTones
 
 export function Experience({ experiences }: ExperienceProps) {
   const sortedExperiences = [...experiences].sort((a, b) => {
@@ -64,8 +73,9 @@ export function Experience({ experiences }: ExperienceProps) {
           {/* Timeline Items */}
           <div className="space-y-8">
             {sortedExperiences.map((experience, index) => {
-              const Icon = typeIcons[experience.type]
-              const colorClass = typeColors[experience.type]
+              const type = (experience.type as ExperienceKind) || 'work'
+              const Icon = typeIcons[type]
+              const dotColor = typeDotColors[type]
 
               return (
                 <motion.div
@@ -78,7 +88,7 @@ export function Experience({ experiences }: ExperienceProps) {
                     <div
                       className={cn(
                         'flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg',
-                        colorClass
+                        dotColor
                       )}
                     >
                       <Icon className="h-6 w-6" />
@@ -124,10 +134,17 @@ export function Experience({ experiences }: ExperienceProps) {
                               </div>
                             )}
                           </div>
+
                           <div className="flex flex-col gap-2 sm:items-end">
-                            <Badge variant="outline" className="text-xs">
+                            {/* Type pill with matching tint */}
+                            <Badge
+                              variant="outline"
+                              tone={typeTones[type]}
+                              className="text-xs capitalize"
+                            >
                               {experience.type.replace('-', ' ')}
                             </Badge>
+
                             <div className="flex items-center gap-1 text-sm text-muted-foreground">
                               <Calendar className="h-4 w-4" />
                               <span>
@@ -135,15 +152,16 @@ export function Experience({ experiences }: ExperienceProps) {
                                   experience.startDate,
                                   experience.endDate
                                 )}
-                                {experience.current && (
-                                  <Badge
-                                    variant="success"
-                                    className="ml-2 text-xs"
-                                  >
-                                    Current
-                                  </Badge>
-                                )}
                               </span>
+                              {experience.current && (
+                                <Badge
+                                  variant="outline"
+                                  tone="emerald"
+                                  className="ml-2 text-xs"
+                                >
+                                  Current
+                                </Badge>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -154,25 +172,24 @@ export function Experience({ experiences }: ExperienceProps) {
                           </p>
                         )}
 
-                        {experience.highlights &&
-                          experience.highlights.length > 0 && (
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-medium text-foreground">
-                                Key Achievements
-                              </h4>
-                              <ul className="space-y-1">
-                                {experience.highlights.map((highlight, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="flex items-start gap-2 text-sm text-muted-foreground"
-                                  >
-                                    <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                                    {highlight}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
+                        {!!experience.highlights?.length && (
+                          <div className="space-y-2">
+                            <h4 className="text-sm font-medium text-foreground">
+                              Key Achievements
+                            </h4>
+                            <ul className="space-y-1">
+                              {experience.highlights.map((highlight, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex items-start gap-2 text-sm text-muted-foreground"
+                                >
+                                  <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                                  {highlight}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
