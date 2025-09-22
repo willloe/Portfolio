@@ -172,7 +172,7 @@
     },
     "images": ["./projects/Portfolio.png"],
     "featured": false,
-    "status": "in-progress",
+    "status": "completed",
     "startDate": "",
     "tags": ["Portfolio", "Frontend", "SEO"]
   },
